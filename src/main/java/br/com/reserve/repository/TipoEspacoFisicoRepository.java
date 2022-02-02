@@ -8,4 +8,6 @@ import br.com.reserve.entity.TipoEspacoFisicoEntity;
 @Repository
 public interface TipoEspacoFisicoRepository extends JpaRepository<TipoEspacoFisicoEntity, String> {
 
+	boolean existsByNomeIgnoreCase(String nome);
+
 }
