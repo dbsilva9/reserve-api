@@ -130,9 +130,7 @@ public class TipoRecursoService {
 	}
 	
 	private TipoRecursoEntity getById(String id) throws NotFoundException {
-		TipoRecursoEntity entity = repository.findById(id)
-				.orElseThrow(() -> new NotFoundException(String.format(Mensagens.REGISTRO_NAO_ENCONTRADO, id)));
-		return entity;
+		return repository.findById(id).orElseThrow(() -> new NotFoundException(String.format(Mensagens.REGISTRO_NAO_ENCONTRADO, id)));
 	}
 	
 }

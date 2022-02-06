@@ -2,6 +2,10 @@ package br.com.reserve.util;
 
 public class Mensagens {
 
+	private Mensagens() throws IllegalAccessException {
+		throw new IllegalAccessException("Não pode ser utilizado");
+	}
+
 	public static final String REGISTRO_NAO_ENCONTRADO = "Registro não encontrado: %s.";
 
 	public static final String ID_INVALIDO = "Id inválido: %s.";
