@@ -8,12 +8,12 @@ public class Response<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private T data;
+	private transient T data;
 	private List<String> errors;
 	
 	public Response() {
 		super();
-		errors = new ArrayList<String>();
+		errors = new ArrayList<>();
 	}
 
 	public Response(T data, List<String> errors) {

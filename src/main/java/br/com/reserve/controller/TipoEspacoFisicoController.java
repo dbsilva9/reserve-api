@@ -1,7 +1,16 @@
 package br.com.reserve.controller;
 
-import javax.validation.Valid;
-
+import br.com.reserve.dto.TipoEspacoFisicoDTO;
+import br.com.reserve.exception.BusinessException;
+import br.com.reserve.exception.NotFoundException;
+import br.com.reserve.response.Response;
+import br.com.reserve.service.TipoEspacoFisicoService;
+import br.com.reserve.validacao.OnCreate;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -17,17 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.reserve.dto.TipoEspacoFisicoDTO;
-import br.com.reserve.exception.BusinessException;
-import br.com.reserve.exception.NotFoundException;
-import br.com.reserve.response.Response;
-import br.com.reserve.service.TipoEspacoFisicoService;
-import br.com.reserve.validacao.OnCreate;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import lombok.extern.log4j.Log4j2;
+import javax.validation.Valid;
 
 @Api(value = "Operação com Tipo Espaço Físico")
 @RestController
@@ -50,7 +49,7 @@ public class TipoEspacoFisicoController {
 	public ResponseEntity<Response<TipoEspacoFisicoDTO>> create(@Valid @RequestBody TipoEspacoFisicoDTO form,
 			BindingResult result) throws BusinessException {
 
-		Response<TipoEspacoFisicoDTO> response = new Response<TipoEspacoFisicoDTO>();
+		Response<TipoEspacoFisicoDTO> response = new Response<>();
 
 		try {
 
@@ -78,7 +77,7 @@ public class TipoEspacoFisicoController {
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Response<TipoEspacoFisicoDTO>> findById(@PathVariable("id") String id) throws NotFoundException{
 
-		Response<TipoEspacoFisicoDTO> response = new Response<TipoEspacoFisicoDTO>();
+		Response<TipoEspacoFisicoDTO> response = new Response<>();
 		
 		try {
 
@@ -101,7 +100,7 @@ public class TipoEspacoFisicoController {
 	public ResponseEntity<Response<Page<TipoEspacoFisicoDTO>>> findAll(
 			@PageableDefault(sort = "nome", direction = Direction.DESC, page = 0, size = 10) Pageable paginacao) {
 
-		Response<Page<TipoEspacoFisicoDTO>> response = new Response<Page<TipoEspacoFisicoDTO>>();
+		Response<Page<TipoEspacoFisicoDTO>> response = new Response<>();
 		try {
 
 			Page<TipoEspacoFisicoDTO> lista = service.findAll(paginacao);
